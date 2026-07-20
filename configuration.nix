@@ -97,8 +97,16 @@
     killall
     neovim
     fastfetch
+    kitty
   ];
+
+  # Set neovim as default editor
   environment.variables.EDITOR = "nvim";
+
+  # Remove Konsole from default KDE Plasma bundle
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
+  ];
 
   ## Install 1pass
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
