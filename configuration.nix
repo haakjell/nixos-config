@@ -107,6 +107,13 @@
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     konsole
   ];
+  # Remove xterm
+  services.xserver.excludePackages = [ pkgs.xterm ];
+  # Set kitty as default terminal
+  environment.etc."xdg/xdg-terminals.list".text = ''
+    kitty.desktop
+  '';
+  environment.variables.TERMINAL = "kitty";
 
   ## Install 1pass
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
