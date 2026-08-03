@@ -100,6 +100,7 @@
     neovim
     fastfetch
     kitty
+    claude-code
   ];
 
   # Set neovim as default editor
@@ -117,12 +118,7 @@
   '';
   environment.variables.TERMINAL = "kitty";
 
-  ## Install 1pass
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "1password"
-    "1password-cli"
-    "1password-gui"
-  ];
+  nixpkgs.config.allowUnfree = true;
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
