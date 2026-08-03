@@ -10,7 +10,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./vanilla-wiiu.nix
+        ./hosts/nixpad/configuration.nix
       ];
     };
   };

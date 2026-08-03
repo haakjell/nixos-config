@@ -1,6 +1,6 @@
 # Wii U GamePad emulator: https://github.com/vanilla-wiiu/vanilla
-# Only imported on this host (see flake.nix) so other machines using this
-# config don't get it.
+# Lives under hosts/nixpad/ and is imported by hosts/nixpad/configuration.nix
+# so other machines using this config don't get it.
 { lib, pkgs, ... }:
 
 let
