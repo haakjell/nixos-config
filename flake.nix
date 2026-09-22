@@ -27,5 +27,15 @@
         ./home.nix
       ];
     };
+    nixosConfigurations.NixPad-Two = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit plasma-manager; };
+      modules = [
+        ./configuration.nix
+        ./hosts/nixpad-two/configuration.nix
+        home-manager.nixosModules.home-manager
+        ./home.nix
+      ];
+    };
   };
 }
