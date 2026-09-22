@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/programs.nix
+  ];
+
   ## Nix
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
@@ -76,33 +80,6 @@
     extraGroups = [ "wheel" ];
     initialPassword = "changeme";
   };
-
-  ## Programs
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      "gfx.text.subpixel-position.force-enabled" = true;
-    };
-  };
-  programs.ssh.startAgent = true;
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "haakjell" ];
-  };
-
-  ## Packages
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    pciutils
-    killall
-    neovim
-    fastfetch
-    kitty
-    claude-code
-  ];
-  environment.variables.EDITOR = "nvim";
 
   ## Terminal: use kitty instead of the KDE/X11 defaults
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
